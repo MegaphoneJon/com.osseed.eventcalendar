@@ -64,7 +64,7 @@ class CRM_EventCalendar_Upgrader extends CRM_EventCalendar_Upgrader_Base {
     $saved_search_id_column_exists = $dao->N == 0 ? FALSE : TRUE;
     if (!$saved_search_id_column_exists) {
       $this->ctx->log->info('Applying civicrm_event_calendar update 1002.  Adding saved_search_id to civicrm_event_calendar table.');
-      CRM_Core_DAO::executeQuery('ALTER TABLE civicrm_event_calendar ADD COLUMN `saved_search_id` int(11) NOT NULL COMMENT "Whether this is a saved search"');
+      CRM_Core_DAO::executeQuery('ALTER TABLE civicrm_event_calendar ADD COLUMN `saved_search_id` int(11) COMMENT "Filter results by this saved search"');
     }
     else {
       $this->ctx->log->info('Skipped civicrm_event_calendar update 1002.  Column saved_search_id already present on civicrm_event_calendar table.');
